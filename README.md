@@ -11,6 +11,8 @@ A Visual Studio Code extension to remove logging statements from your codebase w
 
 ## Usage
 
+![Log Cleaner Demo](images/log-cleaner.gif)
+
 ### Commands
 
 1. Press `Ctrl+Shift+P` (Windows/Linux) or `Cmd+Shift+P` (macOS) to open the Command Palette

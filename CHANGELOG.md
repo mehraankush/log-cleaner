@@ -17,3 +17,9 @@ All notable changes to the "Log Cleaner" extension will be documented in this fi
 
 ## [0.0.2] - 2025-05-18
 - version 0.0.2
+
+## [0.0.3] - 2025-05-18
+- version 0.0.3
+
+## [0.0.4] - 2025-05-18
+- improvise readme
