@@ -2,7 +2,7 @@
   "name": "log-cleaner",
   "displayName": "Log Cleaner",
   "description": "Tried of cleaning your logs? I got your covered .Remove all logging statements from your codebase before pushing to production.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "icon": "images/icon.png",
   "publisher": "ankush-mehra",
