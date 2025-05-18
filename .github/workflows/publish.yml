@@ -1,7 +1,6 @@
 name: Publish Extension
 
 on:
-  workflow_dispatch:
   push:
     tags:
       - "v*"
@@ -11,11 +10,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+          
       - run: npm ci
       - run: npm run compile
+      
+      - name: Check version
+        run: |
+          echo "Package version: $(node -p "require('./package.json').version")"
+          echo "Current tag: ${GITHUB_REF#refs/tags/}"
+          
       - name: Publish to Visual Studio Marketplace
         uses: HaaLeo/publish-vscode-extension@v1
         with:
