@@ -1,0 +1,142 @@
+{
+  "name": "log-cleaner",
+  "displayName": "Log Cleaner",
+  "description": "Tried of cleaning your logs? I got your covered .Remove all logging statements from your codebase before pushing to production.",
+  "version": "0.0.1",
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "publisher": "ankush-mehra",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Other",
+    "Formatters"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mehraankush/log-cleaner"
+  },
+  "keywords": [
+    "log",
+    "clean",
+    "remove",
+    "console.log",
+    "debug",
+    "print",
+    "cleanup"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "log-cleaner.clean",
+        "title": "Log Cleaner: Clean All Files"
+      },
+      {
+        "command": "log-cleaner.cleanFile",
+        "title": "Log Cleaner: Clean Current File"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "log-cleaner.cleanFile",
+        "key": "ctrl+alt+l",
+        "mac": "cmd+alt+l",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "log-cleaner.clean",
+        "key": "ctrl+alt+shift+l",
+        "mac": "cmd+alt+shift+l"
+      }
+    ],
+    "configuration": {
+      "title": "Log Cleaner",
+      "properties": {
+        "logCleaner.patterns": {
+          "type": "array",
+          "default": [
+            "console.log\\s*\\(.*?\\);?",
+            "console.info\\s*\\(.*?\\);?",
+            "console.warn\\s*\\(.*?\\);?",
+            "console.error\\s*\\(.*?\\);?",
+            "console.debug\\s*\\(.*?\\);?",
+            "print\\s*\\(.*?\\)",
+            "System\\.out\\.println\\s*\\(.*?\\);?",
+            "NSLog\\s*\\(.*?\\);?",
+            "Log\\.d\\s*\\(.*?\\);?",
+            "Log\\.i\\s*\\(.*?\\);?",
+            "Log\\.w\\s*\\(.*?\\);?",
+            "Log\\.e\\s*\\(.*?\\);?",
+            "logger\\.info\\s*\\(.*?\\);?",
+            "logger\\.debug\\s*\\(.*?\\);?",
+            "logger\\.warn\\s*\\(.*?\\);?",
+            "logger\\.error\\s*\\(.*?\\);?"
+          ],
+          "description": "Regular expressions to match logging statements"
+        },
+        "logCleaner.fileExtensions": {
+          "type": "array",
+          "default": [
+            "js",
+            "ts",
+            "jsx",
+            "tsx",
+            "py",
+            "java",
+            "c",
+            "cpp",
+            "cs",
+            "php",
+            "rb",
+            "swift",
+            "go",
+            "kt",
+            "m"
+          ],
+          "description": "File extensions to include in log removal"
+        },
+        "logCleaner.excludeFolders": {
+          "type": "array",
+          "default": [
+            "node_modules",
+            "dist",
+            "build",
+            "venv",
+            ".git"
+          ],
+          "description": "Folders to exclude from log removal"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.100.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/glob": "^7.1.3",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3",
+    "ts-loader": "^9.5.2",
+    "webpack": "^5.99.7",
+    "webpack-cli": "^6.0.1",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.5.2",
+    "glob": "^7.1.7"
+  }
+}
